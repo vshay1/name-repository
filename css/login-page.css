@@ -12,7 +12,7 @@ body {
 
   background-repeat: repeat;
   background: var(--color-background); 
-  background-image: url('/frontend/resources/images/pattern.svg');
+  background-image: url('/resources/images/pattern.svg');
   font-size: var(--font-size);
 }
 

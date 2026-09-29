@@ -12,7 +12,7 @@ body {
     overflow: hidden;
     user-select: none;
     background: var(--color-background);
-    background-image: url('/frontend/resources/images/pattern.svg');
+    background-image: url('/resources/images/pattern.svg');
     background-repeat: repeat;
 }
 
@@ -32,7 +32,7 @@ body {
     height: 100%;
     width: 50%;
     background: wheat;
-    background-image: url('/frontend/resources/images/t-selin-erkan-DsbQdmF2Jzg-unsplash.jpg');
+    background-image: url('/resources/images/t-selin-erkan-DsbQdmF2Jzg-unsplash.jpg');
     background-position: center;
     background-size: cover;
     color: white;
