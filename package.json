@@ -2,13 +2,13 @@
   "name": "name-archive",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "node generate-config.js"
+    "build": "echo 'no build step needed'"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.45.0"
-  },
-  "devDependencies": {
-    "dotenv": "^16.4.5"
+    "@supabase/supabase-js": "^2.45.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
   }
 }

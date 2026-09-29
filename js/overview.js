@@ -1,9 +1,4 @@
 /* ============================================================
-   Supabase client
-   ============================================================ */
-import { supabase } from './supabase-client.js';
-
-/* ============================================================
    Constants & state
    ============================================================ */
 const STORAGE_KEY = 'names';
@@ -113,6 +108,33 @@ function initSidebar() {
             document.querySelectorAll('.sidebar-body a').forEach((l) => l.classList.remove('active'));
             link.classList.add('active');
         });
+    });
+}
+
+/* ============================================================
+   Logout
+   ============================================================ */
+function initLogout() {
+    const btn = document.getElementById('logout-btn');
+    if (!btn) return;
+
+    const handleLogout = async () => {
+        if (!confirm('Log out of your account?')) return;
+
+        try {
+            await fetch('/api/logout', { method: 'POST' });
+        } catch {
+        }
+
+        window.location.href = 'login-page.html';
+    };
+
+    btn.addEventListener('click', handleLogout);
+    btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleLogout();
+        }
     });
 }
 
@@ -564,7 +586,6 @@ function initAccessibilityPanel() {
         readingGuide:       document.getElementById('a11y-reading-guide')
     };
 
-    /* ---------- Live setters ---------- */
     function setFontSize(pct) {
         html.style.fontSize = pct === 100 ? '' : `${pct}%`;
     }
@@ -607,9 +628,7 @@ function initAccessibilityPanel() {
             html.style.filter = 'invert(1) hue-rotate(180deg)';
         }
     }
-    function setReduceTransparency() {
-        // No meaningful transparency in the UI right now — placeholder.
-    }
+    function setReduceTransparency() {}
     function setReduceMotion(on) {
         html.classList.toggle('a11y-reduce-motion-live', on);
     }
@@ -639,7 +658,6 @@ function initAccessibilityPanel() {
         readingGuideEl.style.display = on ? 'block' : 'none';
     }
 
-    /* ---------- View switching ---------- */
     let lastFocused = null;
 
     function showA11y() {
@@ -661,7 +679,6 @@ function initAccessibilityPanel() {
         if (e.key === 'Escape' && !a11yView.hidden) showArchive();
     });
 
-    /* ---------- Bind controls ---------- */
     els.fontSize.addEventListener('input', () => {
         const v = Number(els.fontSize.value);
         document.getElementById('a11y-font-size-val').textContent = `${v}%`;
@@ -689,13 +706,11 @@ function initAccessibilityPanel() {
     els.bigCursor.addEventListener('change', () => setBigCursor(els.bigCursor.checked));
     els.readingGuide.addEventListener('change', () => setReadingGuide(els.readingGuide.checked));
 
-    /* ---------- Reading guide pointer tracking ---------- */
     document.addEventListener('pointermove', (e) => {
         if (!readingGuideEl || readingGuideEl.style.display === 'none') return;
         readingGuideEl.style.top = `${e.clientY - 20}px`;
     });
 
-    /* ---------- Reset ---------- */
     resetBtn?.addEventListener('click', () => {
         els.fontSize.value = 100;
         els.lineHeight.value = 100;
@@ -737,27 +752,24 @@ function initAccessibilityPanel() {
    Boot — auth guard, then initialize everything
    ============================================================ */
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Require an authenticated session
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session) {
+    let user;
+    try {
+        const res = await fetch('/api/me');
+        if (!res.ok) {
+            window.location.href = 'login-page.html';
+            return;
+        }
+        user = await res.json();
+    } catch {
         window.location.href = 'login-page.html';
         return;
     }
 
-    // 2. Fetch username from profiles table
-    const { data: profile } = await supabase
-        .from('profiles')
-        .select('username')
-        .eq('id', session.user.id)
-        .single();
-
     const usernameEl = document.querySelector('.sidebar-pfp-info > div:first-child');
-    if (usernameEl && profile) {
-        usernameEl.textContent = `@${profile.username}`;
+    if (usernameEl) {
+        usernameEl.textContent = `@${user.username}`;
     }
 
-    // 3. Initialize the app
     cacheDomRefs();
     initSidebar();
     initSearch();
@@ -766,6 +778,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFlipClock();
     initClockMessages();
     initAccessibilityPanel();
+    initLogout();
 
     renderList(getStoredNames(), {
         title: 'Your Archive',
