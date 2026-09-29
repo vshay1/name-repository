@@ -1,0 +1,204 @@
+@import url(global.css);
+
+/* ============================================================
+   Base
+   ============================================================ */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    background: var(--color-background);
+    background-image: url('/frontend/resources/images/pattern.svg');
+    background-repeat: repeat;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    height: 70%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.visual {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    background: wheat;
+    background-image: url('/frontend/resources/images/t-selin-erkan-DsbQdmF2Jzg-unsplash.jpg');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    align-items: end;
+}
+
+.visual-attribution {
+    color: inherit;
+    opacity: 0.5;
+}
+
+.visual-attribution a {
+    color: inherit;
+}
+
+/* ============================================================
+   Login box
+   ============================================================ */
+.login-box {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    width: 50%;
+    min-width: fit-content;
+    justify-content: space-evenly;
+    font-size: var(--font-size);
+    gap: 20px;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 20px;
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-text-light);
+    height: 100%;
+    position: relative;
+    padding: 30px 20px 20px 20px;
+    box-sizing: border-box;
+    justify-content: space-evenly;
+}
+
+.border-text {
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    background-color: var(--color-primary);
+    padding: 0 8px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+/* ============================================================
+   Form fields
+   ============================================================ */
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: var(--color-form-input);
+    color: var(--color-text-dark);
+    font-size: 20px;
+    transition: 0.3s all ease;
+    padding-right: 40px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    background: var(--color-form-input-focus);
+}
+
+/* ============================================================
+   Password toggle button (accessible)
+   ============================================================ */
+.form-group .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 40%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.form-group .toggle-password svg {
+    display: block;
+    pointer-events: none;
+}
+
+.form-group .toggle-password:hover {
+    opacity: 0.75;
+}
+
+.form-group .toggle-password:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.login-button {
+    display: block;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--color-secondary);
+    color: var(--color-text-light);
+    font-size: var(--font-size);
+    transition: background 0.2s ease;
+}
+
+.login-button:hover {
+    background: var(--color-secondary-hover);
+}
+
+.login-box span {
+    text-align: end;
+}
+
+/* ============================================================
+   Alternate login methods
+   ============================================================ */
+.alt-login-methods {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.alt-login-methods button {
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.alt-login-methods button:hover {
+    box-shadow: 0 0 20px 0 rgba(153, 104, 136, 0.5);
+}
+
+.alt-login-methods button:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}

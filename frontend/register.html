@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="visual">
+            <div class="visual-attribution">Photo by <a href="https://unsplash.com/@cesttse">T. Selin Erkan</a> on <a href="https://unsplash.com/photos/shelves-filled-with-labeled-boxes-DsbQdmF2Jzg">Unsplash</a></div>
+        </div>
+        <div class="login-box">
+            <form id="register-form">
+                <div class="border-text">Get started!</div>
+                <div class="form-group">
+                    <label for="username"></label>
+                    <input type="text" id="username" placeholder="Username" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="email"></label>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"></label>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="button" class="toggle-password" aria-label="Show password" aria-pressed="false">
+                        <svg aria-hidden="true" focusable="false" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                            <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password"></label>
+                    <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                    <button type="button" class="toggle-password" aria-label="Show password" aria-pressed="false">
+                        <svg aria-hidden="true" focusable="false" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+                            <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="alt-login-methods">
+                    <button type="button"><img src="resources/images/icons8-google-48.png" alt="Google"></button>
+                    <button type="button"><img src="resources/images/icons8-apple-50.png" alt="Apple"></button>
+                    <button type="button"><img src="resources/images/icons8-facebook-48.png" alt="Facebook"></button>
+                </div>
+                <button class="login-button" type="submit" id="registerBtn">Register</button>
+            </form>
+            <span>Already have an account? <a href="login-page.html">Login</a></span>
+        </div>
+    </div>
+    <script src="config.js"></script>
+    <script type="module" src="js/register.js"></script>
+</body>
+</html>

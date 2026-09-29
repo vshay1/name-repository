@@ -1,0 +1,130 @@
+@import url(global.css);
+
+body {  
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh;
+
+  margin: 0; 
+  overflow: hidden; 
+  user-select: none; 
+
+  background-repeat: repeat;
+  background: var(--color-background); 
+  background-image: url('/frontend/resources/images/pattern.svg');
+  font-size: var(--font-size);
+}
+
+
+.login-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+
+    height: fit-content;
+    width: 40%;
+
+    padding: 20px;
+    gap: 20px;
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0 ,0.5);
+    font-size: var(--login-font-size);
+    background: var(--color-primary);
+    color: var(--color-text-light);
+}
+.border-text {
+    position: absolute;
+    top: -14px; 
+    left: 20px; 
+    padding: 0 8px; 
+    
+    font-weight: bold;
+    font-family: sans-serif;
+    background-color: var(--color-primary);
+}
+.login-box span{
+    text-align: center;
+}
+.login-box span a{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.login-box form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative; 
+    box-sizing: border-box;
+    padding: 30px 20px 20px 20px; 
+    gap: 20px;
+    border: 1px solid var(--color-text-light);
+}
+.login-button{
+    display: block;
+    padding: 40px;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    background: var(--color-secondary);
+    font-size: var(--font-size);
+}
+.form-group{
+    position: relative;
+}
+.form-group input{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    background: var(--color-form-input);
+    color: var(--color-text-dark);
+    font-size: 20px;
+    transition: 0.3s all ease;
+    padding-right: 40px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.form-group input:focus{
+    background: var(--color-form-input-focus);
+}
+.login-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.login-buttons a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.remember-me{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.alt-login-methods{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.alt-login-methods button{
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+.alt-login-methods button:hover{
+    box-shadow: 0px 0px 20px 0px rgba(153, 104, 136 ,0.5);
+}
+.form-group svg { 
+  position: absolute; 
+  right: 12px; 
+  top: 40%; 
+  transform: translateY(-50%); 
+  cursor: pointer; 
+  color: var(--color-text-dark);
+  z-index: 2;
+}

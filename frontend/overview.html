@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview</title>
+    <link rel="stylesheet" href="css/overview.css">
+</head>
+<body>
+
+    <!-- Reading guide -->
+    <div class="a11y-reading-guide" id="a11y-reading-guide" aria-hidden="true" style="display:none"></div>
+
+    <!-- ===========================
+         Sidebar
+         =========================== -->
+    <div class="sidebar closed">
+        <div class="sidebar-header">
+            <div></div>
+            <span class="sidebar-title">Menu</span>
+            <div class="sidebar-close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="sidebar-body">
+            <div>
+                <a class="active" data-view="overview">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                    </svg>
+                    <span>Overview</span>
+                </a>
+            </div>
+            <div>
+                <a data-view="notifications">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                    </svg>
+                    <span>Notifications</span>
+                </a>
+            </div>
+            <div>
+                <a data-view="archive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
+                    </svg>
+                    <span>View Archive</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="settings.html" class="sidebar-footer-item">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-gear-wide-connected" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"/>
+                </svg>
+                <span>Settings</span>
+            </a>
+
+            <button type="button" class="sidebar-footer-item" id="a11y-open" aria-label="Open accessibility settings">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-universal-access-circle" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <path d="M8 4.143A1.071 1.071 0 1 0 8 2a1.071 1.071 0 0 0 0 2.143m-4.668 1.47 3.24.316v2.5l-.323 4.585A.383.383 0 0 0 7 13.14l.826-4.017c.045-.18.301-.18.346 0L9 13.139a.383.383 0 0 0 .752-.125L9.43 8.43v-2.5l3.239-.316a.38.38 0 0 0-.047-.756H3.379a.38.38 0 0 0-.047.756Z"/>
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8"/>
+                </svg>
+                <span>Accessibility</span>
+            </button>
+
+            <div class="sidebar-footer-profile">
+                <div class="sidebar-pfp" aria-hidden="true"></div>
+                <div class="sidebar-pfp-info">
+                    <div>@username</div>
+                    <div>Info</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===========================
+         Views
+         =========================== -->
+    <div class="views" id="views">
+
+        <!-- ===== Archive view ===== -->
+        <div class="view view-archive" id="view-archive">
+
+            <div class="main-section">
+                <h1>Name Archive</h1>
+                <h5>Your personal archive for the study of, storage of, or reference of names.</h5>
+
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Type a name" autocomplete="off">
+                    <button id="search-clear" class="search-clear" aria-label="Clear search" hidden>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="action-list">
+                    <button data-action="quick-add">Quick Add</button>
+                    <button data-action="random">Randomize</button>
+                </div>
+
+                <div class="list-section" id="list-section"></div>
+            </div>
+
+            <div class="right-section">
+                <div class="flip-clock" id="flip-clock">
+                    <div class="flip-digit" data-unit="hours" data-value="00">
+                        <div class="flip-card">
+                            <div class="flip-top"><span>00</span></div>
+                            <div class="flip-bottom"><span>00</span></div>
+                        </div>
+                    </div>
+                    <div class="flip-digit" data-unit="minutes" data-value="00">
+                        <div class="flip-card">
+                            <div class="flip-top"><span>00</span></div>
+                            <div class="flip-bottom"><span>00</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-messages" id="time-message"></div>
+
+                <!-- Screen reader status region -->
+                <div id="sr-status" class="visually-hidden" role="status" aria-live="polite"></div>
+
+                <div class="hints-section">
+                    <div>Hints</div>
+                    <span>Press <kbd>Enter</kbd> to open the detail form.</span>
+                    <span>Press the <kbd>Quick Add</kbd> button to add just the name (You can always edit).</span>
+                    <span>Press the <kbd>Randomize</kbd> button to show a random name from your archive.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Accessibility view ===== -->
+        <div class="view view-a11y" id="view-a11y" hidden>
+            <div class="a11y-panel">
+                <header class="a11y-header">
+                    <h1 tabindex="-1">Accessibility</h1>
+                    <button type="button" class="btn-secondary" id="a11y-back">Back to archive</button>
+                </header>
+
+                <div class="a11y-body">
+
+                    <!-- Text -->
+                    <section class="a11y-section">
+                        <h2>Text</h2>
+
+                        <div class="a11y-row">
+                            <label for="a11y-font-size">Text size</label>
+                            <input type="range" id="a11y-font-size" min="80" max="160" step="10" value="100">
+                            <output id="a11y-font-size-val" for="a11y-font-size">100%</output>
+                        </div>
+
+                        <div class="a11y-row">
+                            <label for="a11y-line-height">Line height</label>
+                            <input type="range" id="a11y-line-height" min="100" max="200" step="10" value="100">
+                            <output id="a11y-line-height-val" for="a11y-line-height">100%</output>
+                        </div>
+
+                        <div class="a11y-row">
+                            <label for="a11y-letter-spacing">Letter spacing</label>
+                            <input type="range" id="a11y-letter-spacing" min="0" max="4" step="0.5" value="0">
+                            <output id="a11y-letter-spacing-val" for="a11y-letter-spacing">0px</output>
+                        </div>
+
+                        <div class="a11y-row">
+                            <label for="a11y-font-family">Font</label>
+                            <select id="a11y-font-family">
+                                <option value="default">Default</option>
+                                <option value="sans">Sans-serif</option>
+                                <option value="serif">Serif</option>
+                                <option value="mono">Monospace</option>
+                                <option value="dyslexic">OpenDyslexic</option>
+                                <option value="comic">Comic Sans</option>
+                                <option value="atkinson">Atkinson Hyperlegible</option>
+                            </select>
+                        </div>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-bold-text">
+                            <span>Bold text</span>
+                        </label>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-underline-links">
+                            <span>Underline all links</span>
+                        </label>
+                    </section>
+
+                    <!-- Color -->
+                    <section class="a11y-section">
+                        <h2>Color</h2>
+
+                        <div class="a11y-row">
+                            <label for="a11y-contrast">Contrast</label>
+                            <select id="a11y-contrast">
+                                <option value="default">Default</option>
+                                <option value="high">High contrast</option>
+                                <option value="invert">Inverted</option>
+                            </select>
+                        </div>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-reduce-transparency">
+                            <span>Reduce transparency</span>
+                        </label>
+                    </section>
+
+                    <!-- Motion -->
+                    <section class="a11y-section">
+                        <h2>Motion</h2>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-reduce-motion">
+                            <span>Reduce motion</span>
+                        </label>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-pause-clock">
+                            <span>Pause flip clock</span>
+                        </label>
+                    </section>
+
+                    <!-- Navigation & focus -->
+                    <section class="a11y-section">
+                        <h2>Navigation &amp; focus</h2>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-big-focus">
+                            <span>Enlarge focus indicator</span>
+                        </label>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-highlight-headings">
+                            <span>Highlight headings</span>
+                        </label>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-big-cursor">
+                            <span>Large cursor</span>
+                        </label>
+
+                        <label class="a11y-switch">
+                            <input type="checkbox" id="a11y-reading-guide">
+                            <span>Reading guide (follows pointer)</span>
+                        </label>
+                    </section>
+
+                    <!-- Reset -->
+                    <section class="a11y-section">
+                        <button type="button" class="btn-secondary" id="a11y-reset">Reset all to defaults</button>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===========================
+         Detail form modal
+         =========================== -->
+    <div class="modal-overlay" id="detail-overlay" hidden>
+        <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+            <div class="modal-header">
+                <h2 id="detail-title">Name Details</h2>
+                <button type="button" class="modal-close" id="detail-close" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="detail-form" class="modal-body">
+
+                <fieldset class="form-section">
+                    <legend>Identity</legend>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="d-name">Name *</label>
+                            <input type="text" id="d-name" placeholder="e.g. Alexander" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="d-ipa">IPA Pronunciation</label>
+                            <input type="text" id="d-ipa" placeholder="e.g. /ˌælɪɡˈzændər/">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="d-gender">Gender Association</label>
+                            <select id="d-gender">
+                                <option value="">—</option>
+                                <option value="masculine">Masculine</option>
+                                <option value="feminine">Feminine</option>
+                                <option value="unisex">Unisex</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="d-language">Language</label>
+                            <input type="text" id="d-language" placeholder="e.g. Greek">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="d-variants">Variants &amp; Alternate Spellings</label>
+                        <input type="text" id="d-variants" placeholder="e.g. Alexandros, Alessandro, Sasha (comma-separated)">
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>Meaning &amp; Origin</legend>
+
+                    <div class="form-group">
+                        <label for="d-meaning">Meaning</label>
+                        <input type="text" id="d-meaning" placeholder="e.g. Defender of the people">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="d-origin">Origin</label>
+                            <input type="text" id="d-origin" placeholder="e.g. Ancient Greek">
+                        </div>
+                        <div class="form-group">
+                            <label for="d-era">Era / First Attested</label>
+                            <input type="text" id="d-era" placeholder="e.g. 8th century BCE">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="d-background">Background</label>
+                        <textarea id="d-background" rows="3" placeholder="Cultural or linguistic background..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="d-history">History</label>
+                        <textarea id="d-history" rows="4" placeholder="Historical usage, notable bearers, evolution over time..."></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>Classification</legend>
+
+                    <div class="form-group">
+                        <label for="d-tags">Tags <small>(comma-separated)</small></label>
+                        <input type="text" id="d-tags" placeholder="e.g. classical, royal, mythology">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tag preview</label>
+                        <div class="tag-preview" id="d-tag-preview"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="d-popularity">Popularity</label>
+                            <select id="d-popularity">
+                                <option value="">—</option>
+                                <option value="rare">Rare</option>
+                                <option value="uncommon">Uncommon</option>
+                                <option value="common">Common</option>
+                                <option value="popular">Popular</option>
+                                <option value="classic">Classic</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="d-numerology">Numerology</label>
+                            <input type="text" id="d-numerology" placeholder="e.g. 7">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <legend>Notes &amp; Sources</legend>
+
+                    <div class="form-group">
+                        <label for="d-notes">Personal Notes</label>
+                        <textarea id="d-notes" rows="3" placeholder="Your own notes, associations, or remarks..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="d-sources">Sources / References</label>
+                        <textarea id="d-sources" rows="2" placeholder="Books, websites, or citations (one per line)..."></textarea>
+                    </div>
+                </fieldset>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="detail-cancel">Cancel</button>
+                    <button type="submit" class="btn-primary" id="detail-save">Save Name</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script type="module" src="js/overview.js"></script>
+</body>
+</html>

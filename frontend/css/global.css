@@ -1,0 +1,32 @@
+*{
+    /* Base palette */
+    --color-background: rgb(94, 73, 85);
+    --color-primary: rgb(201, 157, 163);
+    --color-secondary: rgb(122, 100, 131);
+    --color-text: rgb(47, 32, 42);
+    --color-text-muted: rgb(104, 70, 92);
+    --color-text-light: rgb(240, 230, 233);
+
+    /* Form */
+    --color-form-input: rgb(153, 119, 124);
+    --color-form-input-focus: rgb(186, 177, 157);
+
+    /* Derived — hovers / borders / shadows */
+    --color-primary-hover: rgb(212, 170, 175);
+    --color-secondary-hover: rgb(138, 116, 147);
+    --color-border: rgba(255, 255, 255, 0.12);
+    --color-border-strong: rgba(255, 255, 255, 0.2);
+
+    --shadow-sm: 0 1px 3px rgba(47, 32, 42, 0.12);
+    --shadow-md: 0 8px 24px rgba(47, 32, 42, 0.18);
+
+    /* Radius / motion */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-pill: 100px;
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-fast: 0.15s;
+    --dur-base: 0.3s;
+
+    --font-size: 20px;
+}
