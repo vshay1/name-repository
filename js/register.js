@@ -1,7 +1,7 @@
 import { supabase } from './supabase-client.js';
 
 /* ============================================================
-   Icon templates for password toggle
+   Icon templates
    ============================================================ */
 const EYE_OPEN = `
     <svg aria-hidden="true" focusable="false" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -29,6 +29,16 @@ document.querySelectorAll('.toggle-password').forEach((btn) => {
         btn.innerHTML = isPassword ? EYE_OPEN : EYE_CLOSED;
     });
 });
+
+/* ============================================================
+   If already signed in, skip the register page
+   ============================================================ */
+(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+        window.location.href = 'overview.html';
+    }
+})();
 
 /* ============================================================
    Registration
@@ -61,6 +71,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
         password,
         options: {
             data: { username },
+            emailRedirectTo: `${window.location.origin}/overview.html`,
         },
     });
 

@@ -1,7 +1,7 @@
 import { supabase } from './supabase-client.js';
 
 /* ============================================================
-   Icon templates for password toggle
+   Icon templates
    ============================================================ */
 const EYE_OPEN = `
     <svg aria-hidden="true" focusable="false" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -29,6 +29,16 @@ document.querySelectorAll('.toggle-password').forEach((btn) => {
         btn.innerHTML = isPassword ? EYE_OPEN : EYE_CLOSED;
     });
 });
+
+/* ============================================================
+   If already signed in, skip the login page
+   ============================================================ */
+(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+        window.location.href = 'overview.html';
+    }
+})();
 
 /* ============================================================
    Forgot password
@@ -66,7 +76,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
     });
@@ -78,13 +88,3 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
     window.location.href = 'overview.html';
 });
-
-/* ============================================================
-   If already logged in, skip the login page
-   ============================================================ */
-(async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-        window.location.href = 'overview.html';
-    }
-})();
