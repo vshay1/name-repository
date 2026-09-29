@@ -112,33 +112,6 @@ function initSidebar() {
 }
 
 /* ============================================================
-   Logout
-   ============================================================ */
-function initLogout() {
-    const btn = document.getElementById('logout-btn');
-    if (!btn) return;
-
-    const handleLogout = async () => {
-        if (!confirm('Log out of your account?')) return;
-
-        try {
-            await fetch('/api/logout', { method: 'POST' });
-        } catch {
-        }
-
-        window.location.href = 'login-page.html';
-    };
-
-    btn.addEventListener('click', handleLogout);
-    btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            handleLogout();
-        }
-    });
-}
-
-/* ============================================================
    Rendering
    ============================================================ */
 function renderList(names, { title, empty } = {}) {
@@ -778,7 +751,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFlipClock();
     initClockMessages();
     initAccessibilityPanel();
-    initLogout();
 
     renderList(getStoredNames(), {
         title: 'Your Archive',
