@@ -1,4 +1,7 @@
+// js/login-page.js
 import { supabase } from './supabase-client.js';
+
+const EMAIL_DOMAIN = 'noreply.local';
 
 /* ============================================================
    Icon templates
@@ -16,7 +19,7 @@ const EYE_CLOSED = `
     </svg>`;
 
 /* ============================================================
-   Accessible password toggle
+   Password toggle
    ============================================================ */
 document.querySelectorAll('.toggle-password').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -31,58 +34,28 @@ document.querySelectorAll('.toggle-password').forEach((btn) => {
 });
 
 /* ============================================================
-   If already signed in, skip the login page
+   Skip login page if already signed in
    ============================================================ */
 (async () => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-        window.location.href = 'overview.html';
-    }
+    if (session) window.location.href = 'overview.html';
 })();
 
 /* ============================================================
-   Forgot password
-   ============================================================ */
-const forgotLink = document.querySelector('.login-buttons a');
-if (forgotLink) {
-    forgotLink.addEventListener('click', async (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById('email').value.trim();
-        if (!email) {
-            alert('Please enter your email address first, then click "Forgot password".');
-            return;
-        }
-
-        const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: `${window.location.origin}/update-password.html`,
-        });
-
-        if (error) {
-            alert(error.message);
-            return;
-        }
-
-        alert('Password reset link sent. Check your email.');
-    });
-}
-
-/* ============================================================
-   Login
+   Login — username + password
    ============================================================ */
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value.trim();
+    const username = document.getElementById('username').value.trim().toLowerCase();
     const password = document.getElementById('password').value;
 
-    const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-    });
+    const email = `${username}@${EMAIL_DOMAIN}`;
+
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
-        alert(error.message);
+        alert('Incorrect username or password.');
         return;
     }
 

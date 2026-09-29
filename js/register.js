@@ -1,5 +1,7 @@
 import { supabase } from './supabase-client.js';
 
+const EMAIL_DOMAIN = 'noreply.local';
+
 /* ============================================================
    Icon templates
    ============================================================ */
@@ -16,7 +18,7 @@ const EYE_CLOSED = `
     </svg>`;
 
 /* ============================================================
-   Accessible password toggle
+   Password toggle
    ============================================================ */
 document.querySelectorAll('.toggle-password').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -31,28 +33,25 @@ document.querySelectorAll('.toggle-password').forEach((btn) => {
 });
 
 /* ============================================================
-   If already signed in, skip the register page
+   Skip register page if already signed in
    ============================================================ */
 (async () => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-        window.location.href = 'overview.html';
-    }
+    if (session) window.location.href = 'overview.html';
 })();
 
 /* ============================================================
-   Registration
+   Registration — username + password only
    ============================================================ */
 document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById('username').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const username = document.getElementById('username').value.trim().toLowerCase();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    if (!username) {
-        alert('Please enter a username.');
+    if (!/^[a-z0-9_]{3,20}$/.test(username)) {
+        alert('Username must be 3–20 characters, letters/numbers/underscores only.');
         return;
     }
 
@@ -66,24 +65,32 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
         return;
     }
 
+    const email = `${username}@${EMAIL_DOMAIN}`;
+
     const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
             data: { username },
-            emailRedirectTo: `${window.location.origin}/overview.html`,
         },
     });
 
     if (error) {
-        alert(error.message);
+        if (error.message.toLowerCase().includes('already')) {
+            alert('That username is taken. Try another.');
+        } else {
+            alert(error.message);
+        }
         return;
     }
 
     if (data.session) {
         window.location.href = 'overview.html';
     } else {
-        alert('Registration successful! Check your email to confirm your account.');
-        window.location.href = 'login-page.html';
+        alert(
+            'Account created, but email confirmation is enabled in Supabase.\n\n' +
+            'Go to Supabase → Authentication → Providers → Email and turn OFF "Confirm email". ' +
+            'Then try registering again.'
+        );
     }
 });
