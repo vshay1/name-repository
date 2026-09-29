@@ -1,5 +1,8 @@
 import { supabase } from './supabase-client.js';
 
+/* ============================================================
+   Icon templates for password toggle
+   ============================================================ */
 const EYE_OPEN = `
     <svg aria-hidden="true" focusable="false" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
@@ -12,10 +15,14 @@ const EYE_CLOSED = `
         <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
     </svg>`;
 
+/* ============================================================
+   Accessible password toggle
+   ============================================================ */
 document.querySelectorAll('.toggle-password').forEach((btn) => {
     btn.addEventListener('click', () => {
         const input = btn.parentElement.querySelector('input');
         const isPassword = input.type === 'password';
+
         input.type = isPassword ? 'text' : 'password';
         btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
         btn.setAttribute('aria-pressed', String(isPassword));
@@ -23,18 +30,49 @@ document.querySelectorAll('.toggle-password').forEach((btn) => {
     });
 });
 
-document.getElementById('login-form').addEventListener('submit', async (e) => {
+/* ============================================================
+   Registration
+   ============================================================ */
+document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const username = document.getElementById('username').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (!username) {
+        alert('Please enter a username.');
+        return;
+    }
+
+    if (password.length < 6) {
+        alert('Password must be at least 6 characters.');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+            data: { username },
+        },
+    });
 
     if (error) {
         alert(error.message);
         return;
     }
 
-    window.location.href = 'overview.html';
+    if (data.session) {
+        window.location.href = 'overview.html';
+    } else {
+        alert('Registration successful! Check your email to confirm your account.');
+        window.location.href = 'login-page.html';
+    }
 });
