@@ -2,7 +2,7 @@ node_modules/
 .env
 .env.local
 config.js
-static/config.js
 .DS_Store
 **/.DS_Store
 .vercel
+dist/
